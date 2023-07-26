@@ -1,0 +1,14 @@
+[Unit]
+Description=RCLink4G Service
+#After=network-online.target
+#Wants=network-online.target
+
+[Service]
+ExecStart=/opt/rclink4g/rclink4g.sh
+WorkingDirectory=/opt/rclink4g
+User=pi
+Group=pi
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

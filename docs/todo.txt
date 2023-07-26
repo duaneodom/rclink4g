@@ -1,0 +1,40 @@
+* show connected camera info on config page
+* show mavproxy connection status (disconnected or which port "/dev/ttyS0")
+* high res imagery
+    https://chdk.fandom.com/wiki/CHDK
+
+
+
+* status lights
+    1) red - internet connection / updating clock
+    2) red - tailscale connection
+    3) red - autopilot connection (mavproxy/custom mqtt)
+    4) green - fully operational
+
+    flash red lights during each phase, then slow flash green once system
+    is operational.  if an error occurs display solid red led for the 
+    problem phase.
+
+
+
+* mavproxy install
+    sudo apt --no-install-recommends install python3-pip python3-future python3-lxml python3-numpy python3-serial
+    pip3 install pymavlink mavproxy --user
+    ln -s /home/pi/.local/lib/python3.9/site-packages/MAVProxy/mavproxy.py
+    chmod +x mavproxy.py
+
+* gstreamer install
+sudo apt --no-install-recommends install gstreamer1.0-tools gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-plugins-rtp gstreamer1.0-x gstreamer1.0-libav python3-gst-1.0 gir1.2-gstreamer-1.0 gir1.2-gst-plugins-base-1.0 gir1.2-gst-plugins-bad-1.0
+
+* install/setup tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
+see docs/howto/tailscale.txt for read-only setup
+
+* enable read-only (dhcp/tailscale)
+vim /etc/fstab
+    tmpfs		/var/lib/dhcp		tmpfs	nosuid,nodev         0       0
+    /data/tailscale /var/lib/tailscale      none	defaults,bind        0       0
+    /data/tailscale /var/cache/tailscale	none	defaults,bind        0       0
+
+* making /boot files non-executable (althttpd serves images as cgi if marked executable)
+    add fmask=0111 to the /boot line in /etc/fstab after defaults

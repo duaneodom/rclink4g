@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div[id=container]
+            {
+                width: 60%;
+                padding: 20px;
+                margin: 0 auto;
+                border-radius: 5px;
+                background-color: #f2f2f2;
+            }
+
+            [id=title]
+            {
+                text-align: center;
+            }
+
+            input[type=text]
+            {
+                padding: 12px 20px;
+                margin: 8px 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            input[type=submit]
+            {
+                background-color: #4caf50;
+                color: white;
+                padding: 14px 20px;
+                border-radius: 4px;
+            }
+
+            label[class=video_stream]
+            {
+                display: block;
+                text-align: center;
+            }
+
+            table[class=settings]
+            {
+                margin-bottom: 30px;
+                padding: 20px;
+                border: solid 2px #ccc;
+                border-radius: 4px;
+            }
+
+            table[class=settings] td
+            {
+                width: 50%;
+            }
+
+            table[class=video_stream]
+            {
+                width: 100%;
+                margin-bottom: 30px;
+                padding: 20px;
+                border: solid 2px #ccc;
+                border-radius: 4px;
+            }
+
+            select
+            {
+                text-align: center;
+                width: 100%;
+            }
+        </style>
+    <head>
+    <body>
+        <div id=container>
+            <h2 id=title>RCLink4G Config</h2>
+
+            <form action="/save_config.cgi">
+                <table class="settings">
+                    <tr>
+                        <td><label for="hostname">hostname:</label></td>
+                        <td><input type="text" id="hostname" name="hostname" value="<hostname>"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="ground_station_address">ground station address:</label></td>
+                        <td><input type="text" id="ground_station_address" name="ground_station_address" value="<ground_station_address>"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="ground_station_video_port">ground station video port:</label></td>
+                        <td><input type="text" id="ground_station_video_port" name="ground_station_video_port" value="<ground_station_video_port>"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="video_channel">video channel:</label></td>
+                        <td><input type="text" id="video_channel" name="video_channel" value="<video_channel>"></td>
+                    </tr>
+                </table>
+
+                <table class="video_stream">
+                    <tr><th colspan="100%">video stream PWM settings</th></tr>
+                    <tr>
+                        <td><label class="video_stream">1000-1250</label></td>
+                        <td><label class="video_stream">1251-1500</label></td>
+                        <td><label class="video_stream">1501-1750</label></td>
+                        <td><label class="video_stream">1751-2000</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select class="video_stream" name="video_stream_1">
+                                <option value="0">none</option>
+                                <option value="1">very low bw</option>
+                                <option value="2">low bw</option>
+                                <option value="3">normal bw</option>
+                                <option value="4">hi-res snapshot</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="video_stream" name="video_stream_2">
+                                <option value="0">none</option>
+                                <option value="1">very low bw</option>
+                                <option value="2">low bw</option>
+                                <option value="3">normal bw</option>
+                                <option value="4">hi-res snapshot</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="video_stream" name="video_stream_3">
+                                <option value="0">none</option>
+                                <option value="1">very low bw</option>
+                                <option value="2">low bw</option>
+                                <option value="3">normal bw</option>
+                                <option value="4">hi-res snapshot</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="video_stream" name="video_stream_4">
+                                <option value="0">none</option>
+                                <option value="1">very low bw</option>
+                                <option value="2">low bw</option>
+                                <option value="3">normal bw</option>
+                                <option value="4">hi-res snapshot</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table><br>
+                <div><div><a href="logs.cgi">view logs</a></div><div><a href="snapshots.cgi">view snapshots</a></div><div align="right"><input type="submit" value="save"></div></div>
+            </form> 
+        </div>
+    </body>
+</html>
