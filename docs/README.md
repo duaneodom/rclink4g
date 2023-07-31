@@ -6,6 +6,8 @@ tested to work correctly so far is a Raspberry Pi Zero 2W, Raspberry Pi Camera
 and a usb cellular dongle.  This hardware has been chosen for it's light
 weight, compact size and low cost.
 
+![test hardware](docs/rclink4g.jpg "test hardware")
+
 
 
 ## Terms
@@ -42,7 +44,7 @@ Lite OS to be an RCLink4G companion computer. Once you have your OS installed
 and are connected to the internet, log in and run the following commands (replacing
 the file date/version info as appropriate).
 
-> **NOTE**
+> **Note**
 You must install the Raspberry Pi OS image that corresponds to the
 "date_codename_arch_lite" (eg. 2023-05-03_bullseye_arm64_lite) specified in the
 "setup_xxx_xxx_xxx_lite.run" filename.  Each configuration script version is
@@ -99,7 +101,7 @@ settings (see the [Configuration](#configuration) section below for setting desc
 5. turn on your vehicle (which powers on your RCLink4G unit)
 6. wait for the telemetry and video stream to appear
 
-> **NOTE**
+> **Note**
 When using a Raspberry Pi Camera it is important to have your GCS (video player) running
 before starting the RCLink4G unit or the video stream won't show up.  This is due to
 some efficienies in video encoding that are taken when using the Raspberry Pi Camera
@@ -179,7 +181,7 @@ is also accessible on the root of the SD card on the companion computer.  You ca
 download the snapshots via the web interface or remove this SD card and insert it into
 your GCS computer to have direct access to them.
 
-> **NOTE**
+> **Warning**
 While you can download these snapshots via the web interface it is suggested to wait
 until you are no longer actively operating your vehicle as this might saturate the
 bandwidth of your cellular connection and hinder the operation of your vehicle.  This
