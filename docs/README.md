@@ -16,7 +16,7 @@ compact size and low cost.
 - **Mesh VPN**: Mesh Virtual Private Network (Tailscale specifically)
 - **Autopilot**: ArduPilot compatible flight controller
 - **Web Interface**: an HTML interface located on the companion computer accessible
-via your web browser at http://hostname:8080 (hostname being the tailscale hostname
+via your web browser at `http://hostname:8080` (hostname being the tailscale hostname
 that you configured on the configuration settings page, default rclink4g)
 
 
@@ -74,10 +74,10 @@ celluar providers.
 
 ## RCLink4G Setup
 
-Once you have successfully completed the Installation instructions above
+Once you have successfully completed the [Installation](#installation) instructions above
 
 1. copy your tailscale.key file to the root of the companion computer SD card
-2. optionally edit **rclink4g.conf** file in the root of the SD card to change the following settings (see Configuration below for setting descriptions)
+2. optionally edit **rclink4g.conf** file in the root of the SD card to change the following settings (see [Configuration](#configuration) below for setting descriptions)
     - **hostname**
     - **ground_station_address**
     - **ground_station_video_port**
