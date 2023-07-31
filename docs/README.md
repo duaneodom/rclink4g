@@ -1,10 +1,10 @@
 <h1 style="text-align: center">RCLink 4G</h1>
 
 This project enables sending telemetry and video for ardupilot based vehicles
-over a TCP/IP based connection (specifically cellular).  The hardware
-that has been tested to work correctly so far is a Raspberry Pi Zero 2W,
-Raspberry Pi Camera and a usb cellular dongle.  This hardware has been chosen
-for it's light weight, compact size and low cost.
+over a TCP/IP connection (specifically cellular).  The hardware that has been
+tested to work correctly so far is a Raspberry Pi Zero 2W, Raspberry Pi Camera
+and a usb cellular dongle.  This hardware has been chosen for it's light
+weight, compact size and low cost.
 
 
 
@@ -12,7 +12,7 @@ for it's light weight, compact size and low cost.
 
 - **Companion Computer**: Raspberry Pi
 - **Camera**: Raspberry Pi Camera
-- **GCS**: Ground Control Station (Mission Planner, QGroundControl, etc)
+- **GCS**: Mavlink based Ground Control Station (Mission Planner, QGroundControl, etc)
 - **Mesh VPN**: Mesh Virtual Private Network (Tailscale specifically)
 - **Autopilot**: ArduPilot compatible flight controller
 - **Web Interface**: an HTML interface located on the companion computer accessible
@@ -38,11 +38,11 @@ snapshot library are available through a web interface on the companion computer
 
 I do not provide a Raspberry Pi image due to size limitations on github but instead
 provide a configuration script that will configure your installed Raspberry Pi
-Lite OS (of the specified version) to be an RCLink4G companion computer. Once you
-have your OS installed, you've logged in and are connected to the internet run the
-following commands (replacing the file date/version info as appropriate).
+Lite OS to be an RCLink4G companion computer. Once you have your OS installed
+and are connected to the internet, log in and run the following commands (replacing
+the file date/version info as appropriate).
 
-[!NOTE]
+> **NOTE**
 You must install the Raspberry Pi OS image that corresponds to the
 "date_codename_arch_lite" (eg. 2023-05-03_bullseye_arm64_lite) specified in the
 "setup_xxx_xxx_xxx_lite.run" filename.  Each configuration script version is
