@@ -56,23 +56,28 @@ chmod +x setup_rclink4g_2023-05-03_bullseye_arm64_lite.run
 
 
 
+## Official Raspberry Pi OS Image Links
+[RPi OS Image 2023-05-03_bullseye_arm64_lite](https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2023-05-03/2023-05-03-raspios-bullseye-arm64-lite.img.xz)
+
+
+
 ## Tailscale Setup
 
 As of now the only VPN supported is tailscale (this is likely to change in the
-future), so to start things off you will need a free tailscale account.  The free
+future) so to start things off you will need a free tailscale account.  The free
 accounts give you up to 3 users and 100 devices (no subscription/credit card needed).
-Tailscale is a mesh VPN.  This allows your devices to securely communicate with
+Tailscale is a mesh VPN which allows your devices to securely communicate with
 each other over the open internet even through double NATs that are typical with
 celluar providers.
 
-- create your free tailscale account
-- install the VPN software on your GCS and give it a memorable tailscale hostname
+- create your free tailscale account at https://tailscale.com
+- install the VPN software on your GCS and give it a tailscale hostname
 - create an ephemeral key to use on your RCLink4G unit
     - go to Admin Console -> Settings -> Keys
     - click Generate Auth Key
-    - toggle reusable on
-    - set expiration days (maximum preferred for convenience)
-    - toggle ephemeral on
+    - toggle reusable to on
+    - set expiration days (maximum is preferred for convenience)
+    - toggle ephemeral to on
     - click Generate Key
     - copy the key text and paste it into a filed called tailscale.key
 
@@ -83,30 +88,41 @@ celluar providers.
 Once you have successfully completed the [Installation](#installation) instructions above
 
 1. copy your tailscale.key file to the root of the companion computer SD card
-2. optionally edit **rclink4g.conf** file in the root of the SD card to change the following settings (see [Configuration](#configuration) below for setting descriptions)
+2. optionally edit **rclink4g.conf** file in the root of the SD card to change the following
+settings (see the [Configuration](#configuration) section below for setting descriptions)
     - **hostname**
     - **ground_station_address**
     - **ground_station_video_port**
     - **video_channel**
+3. Start your GCS computer, connect to tailscale and start your GCS software
+4. connect your RCLink4G to your autopilot via USB or serial cable
+5. turn on your vehicle (which powers on your RCLink4G unit)
+6. wait for the telemetry and video stream to appear
 
+> **NOTE**
+When using a Raspberry Pi Camera it is important to have your GCS (video player) running
+before starting the RCLink4G unit or the video stream won't show up.  This is due to
+some efficienies in video encoding that are taken when using the Raspberry Pi Camera
+on the low power processor in the Raspberry Pi Zero 2W.
 
 
 ## Boot Indicator LEDs
 
-During the bootup of the companion computer each indicator LED will pulse once a
+During the boot process of the companion computer each indicator LED will pulse once a
 second during the stage indicated by the LED.  If a halting error occurs during
-that stage, the LED will start a fast flash.  This tell you what stage failed
-which should give you an indication of what the problem might be.  You can access
-the logs in the logs directory on the root of the companion computer SD card for
-more detailed information.  The boot stages are as follows
+that stage, the LED will start to flash quickly and the boot process will be halted.
+This will tell you what stage failed which should give you an indication of what the
+problem might be.  You can access the logs in the logs directory on the root of the
+companion computer SD card by removing it and inserting it into an SD card reader on
+another computer (your GCS) for more detailed information.  The boot stages are as follows
 
 1. **network**: connecting to the internet and updating the clock
 2. **vpn**: connecting to the mesh VPN (Tailscale)
-3. **autopilot**: connecting via serial to the autopilot
+3. **autopilot**: connecting to the autopilot
 4. **online**: the system is online
 
 If the online LED turns off, this is an indication that internet/VPN connectivity
-was lost.  The system will attempt to reset the internet connection, restart the connection
+was lost.  The system will attempt to reset the internet connection, reconnect
 to the autopilot and restart the video streams.
 
 
@@ -115,13 +131,15 @@ to the autopilot and restart the video streams.
 
 All configuration settings are available via the web interface.
 
-- **hostname**: the tailscale hostname that you want to give the companion computer
+- **hostname**: the tailscale hostname that you want to assign to the companion computer
 - **ground station address**: the tailscale hostname (or IP address) of your GCS
 - **ground station video port**: the port at which your GCS is listening for a video stream
 - **video channel**: the servo channel on the autopilot which you would like to
-use for video switching
-- **video stream PWM settings**: 4 PWM ranges for the selected video channel that
-will select the configured video setting
+use for video switching. This should be an unused servo channel on your autopilot and
+you should setup your RC transmitter to toggle this channel between the 4 PWM ranges
+supported for the video channel.
+- **video stream PWM settings**: the 4 fixed PWM ranges for the selected video channel that
+are used to select the user configured video setting
     - none
     - very low bandwith
     - low bandwidth
@@ -135,26 +153,36 @@ will select the configured video setting
 Logs are accessible via the web interface and are split into Boot Logs and System Logs.
 
 Boot Logs are things that occur before the companion computer has a connection to
-the internet, as such, the timestamps for these logs will often be inaccurate.
+the internet, as such, the timestamps for these logs will often be inaccurate.  This log
+is useful for determining problems with things such as:
+
+- invalid config file
+- problems connecting to the internet
+- problems updating the clock
 
 System Logs are things that occur after the companion computer has a connection to
-the internet and will tell you problems with things like: your mesh VPN, drops
-in your internet connection, etc.
+the internet and will have accurately timestamped entries for things such as:
+
+- Mesh VPN key problems
+- Mesh VPN successful/failed connections
+- service restarts due to configuration setting changes (which require a restart)
+- service restarts due to drops in internet connectivity
+
 
 
 
 ## Snapshot Library
 
-Snapshots are accessible via the web interface.  All snapshots are named with a
-timestamp and are located in one snapshot directory which is also accessible on
-the root of the SD card on the companion computer.  You can download the snapshots
-via the web interface or remove this SD card and insert it into your GCS computer
-to have direct access to them.
+The high resolution snaphots that you take are accessible via the web interface.  All
+snapshots are named with a timestamp and are located in the snapshot directory which
+is also accessible on the root of the SD card on the companion computer.  You can
+download the snapshots via the web interface or remove this SD card and insert it into
+your GCS computer to have direct access to them.
 
-
-
-
-*   when using picamera it is important to have mission planner (video player)
-    running before starting the rclink4g unit.  this is due to some efficienies
-    in video encoding that are taken when using the picamera on a lower power
-    processor.
+> **NOTE**
+While you can download these snapshots via the web interface it is suggested to wait
+until you are no longer actively operating your vehicle as this might saturate the
+bandwidth of your cellular connection and hinder the operation of your vehicle.  This
+can also be costly on metered connections such as cellular.  It's suggested to pull
+the SD card out of the RCLink4G unit and insert it into an SD card reader on another
+computer (your GCS) to copy the snapshots over directly.
