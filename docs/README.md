@@ -1,5 +1,4 @@
 <h1 style="text-align: center">RCLink 4G</h1>
-________________________________________________________________________________
 
 This project enables sending telemetry and video for ardupilot based vehicles
 over a TCP/IP based connection (specifically cellular).  The hardware that has
@@ -7,8 +6,9 @@ been tested to work correctly so far is a Raspberry Pi Zero 2W, Raspberry Pi Cam
 and a usb cellular dongle.  This hardware has been chosen for it's light weight,
 compact size and low cost.
 
+
+
 ## Terms
-________________________________________________________________________________
 
 - **Companion Computer**: Raspberry Pi
 - **Camera**: Raspberry Pi Camera
@@ -20,8 +20,8 @@ via your web browser at http://hostname:8080 (hostname being the tailscale hostn
 that you configured on the configuration settings page, default rclink4g)
 
 
+
 ## How it Works
-________________________________________________________________________________
 
 The mesh VPN is used to make a connection between the cellular modem and your GCS.
 Gstreamer running on the companion computer is used to stream video from the
@@ -33,8 +33,8 @@ settings along with system logs and a snapshot library are available through
 a web interface on the companion computer.
 
 
+
 ## Installation
-________________________________________________________________________________
 
 I do not provide a Raspberry Pi image due to size limitations on github so instead
 I provide a configuration script that will configure your installed Raspberry Pi
@@ -49,8 +49,8 @@ chmod +x setup_rclink4g_2023-05-03_bullseye_arm64_lite.run
 ```
 
 
+
 ## Tailscale Setup
-________________________________________________________________________________
 
 As of now the only VPN supported is tailscale (this is likely to change in the
 future), so to start things off you will need a free tailscale account.  The free
@@ -71,8 +71,8 @@ celluar providers.
     - copy the key text and paste it into a filed called tailscale.key
 
 
+
 ## RCLink4G Setup
-________________________________________________________________________________
 
 Once you have successfully completed the Installation instructions above
 
@@ -84,8 +84,8 @@ Once you have successfully completed the Installation instructions above
     - **video_channel**
 
 
+
 ## Boot Indicator LEDs
-________________________________________________________________________________
 
 During the bootup of the companion computer each indicator LED will pulse once a
 second during the stage indicated by the LED.  If a halting error occurs during
@@ -104,8 +104,8 @@ was lost.  The system will attempt to reset the internet connection, restart the
 to the autopilot and restart the video streams.
 
 
+
 ## Configuration
-________________________________________________________________________________
 
 All configuration settings are available via the web interface.
 
@@ -123,8 +123,8 @@ will select the configured video setting
     - high resolution snapshot
 
 
+
 ## Logs
-________________________________________________________________________________
 
 Logs are accessible via the web interface and are split into Boot Logs and System Logs.
 
@@ -136,8 +136,8 @@ the internet and will tell you problems with things like: your mesh VPN, drops
 in your internet connection, etc.
 
 
+
 ## Snapshot Library
-________________________________________________________________________________
 
 Snapshots are accessible via the web interface.  All snapshots are named with a
 timestamp and are located in one snapshot directory which is also accessible on
