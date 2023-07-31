@@ -156,7 +156,7 @@ Boot Logs are things that occur before the companion computer has a connection t
 the internet, as such, the timestamps for these logs will often be inaccurate.  This log
 is useful for determining problems with things such as:
 
-- invalid config file
+- invalid `rclink4g.conf` config file
 - problems connecting to the internet
 - problems updating the clock
 
@@ -165,7 +165,7 @@ the internet and will have accurately timestamped entries for things such as:
 
 - Mesh VPN key problems
 - Mesh VPN successful/failed connections
-- service restarts due to configuration setting changes (which require a restart)
+- service restarts due to configuration changes (when a restart is required)
 - service restarts due to drops in internet connectivity
 
 
