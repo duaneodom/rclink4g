@@ -1,10 +1,10 @@
 <h1 style="text-align: center">RCLink 4G</h1>
 
 This project enables sending telemetry and video for ardupilot based vehicles
-over a TCP/IP based connection (specifically cellular).  The hardware that has
-been tested to work correctly so far is a Raspberry Pi Zero 2W, Raspberry Pi Camera
-and a usb cellular dongle.  This hardware has been chosen for it's light weight,
-compact size and low cost.
+over a TCP/IP based connection (specifically cellular).  The hardware
+that has been tested to work correctly so far is a Raspberry Pi Zero 2W,
+Raspberry Pi Camera and a usb cellular dongle.  This hardware has been chosen
+for it's light weight, compact size and low cost.
 
 
 
@@ -17,30 +17,36 @@ compact size and low cost.
 - **Autopilot**: ArduPilot compatible flight controller
 - **Web Interface**: an HTML interface located on the companion computer accessible
 via your web browser at `http://hostname:8080` (hostname being the tailscale hostname
-that you configured on the configuration settings page, the default "rclink4g")
+that you configured on the configuration settings page, the default is "rclink4g")
 
 
 
 ## How it Works
 
-The mesh VPN is used to make a connection between the cellular modem and your GCS.
-Gstreamer running on the companion computer is used to stream video from the
-camera to your GCS. The companion computer also runs mavproxy which provides a
-TCP/IP based connection to your autopilot.  The companion computer also listens
-to a user specified servo channel to allow you to change video resolutions,
-framerates and to take high resolution snapshots. All of the user configurable
-settings along with system logs and a snapshot library are available through
-a web interface on the companion computer.
+The mesh VPN is used to make a connection between the companion computer and your GCS
+via the cellular modem.  The companion computer streams video from the onboard
+camera to your GCS as well as providing mavlink telemetry to your GCS all over the
+secure TCP/IP link provided by the cellular modem and the mesh VPN.  The companion
+computer also listens to a user specified servo channel to allow you to change video
+resolutions, video framerates and to take high resolution snapshots from your own
+RC transmitter. All of the user configurable settings along with system logs and a
+snapshot library are available through a web interface on the companion computer.
 
 
 
 ## Installation
 
-I do not provide a Raspberry Pi image due to size limitations on github so instead
-I provide a configuration script that will configure your installed Raspberry Pi
+I do not provide a Raspberry Pi image due to size limitations on github but instead
+provide a configuration script that will configure your installed Raspberry Pi
 Lite OS (of the specified version) to be an RCLink4G companion computer. Once you
-have your OS installed, login and run the following commands once connected to the
-internet (replacing the file date/version info as appropriate).
+have your OS installed, you've logged in and are connected to the internet run the
+following commands (replacing the file date/version info as appropriate).
+
+[!NOTE]
+You must install the Raspberry Pi OS image that corresponds to the
+"date_codename_arch_lite" (eg. 2023-05-03_bullseye_arm64_lite) specified in the
+"setup_xxx_xxx_xxx_lite.run" filename.  Each configuration script version is
+specifically built for **only** that version of the Raspberry Pi OS.
 
 ```bash
 curl -O -H "Accept: application/vnd.github.v3.raw" https://api.github.com/repos/duaneodom/rclink4g/contents/dist/setup_rclink4g_2023-05-03_bullseye_arm64_lite.run
