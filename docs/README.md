@@ -33,6 +33,77 @@ settings along with system logs and a snapshot library are available through
 a web interface on the companion computer.
 
 
+## Installation
+________________________________________________________________________________
+
+I do not provide a Raspberry Pi image due to size limitations on github so instead
+I provide a configuration script that will configure your installed Raspberry Pi
+Lite OS (of the specified version) to be an RCLink4G companion computer. Once you
+have your OS installed, login and run the following commands once connected to the
+internet (replacing the file date/version info as appropriate).
+
+```bash
+curl -O -H "Accept: application/vnd.github.v3.raw" https://api.github.com/repos/duaneodom/rclink4g/contents/dist/setup_rclink4g_2023-05-03_bullseye_arm64_lite.run
+chmod +x setup_rclink4g_2023-05-03_bullseye_arm64_lite.run
+./setup_rclink4g_2023-05-03_bullseye_arm64_lite.run
+```
+
+
+## Tailscale Setup
+________________________________________________________________________________
+
+As of now the only VPN supported is tailscale (this is likely to change in the
+future), so to start things off you will need a free tailscale account.  The free
+accounts give you up to 3 users and 100 devices (no subscription/credit card needed).
+Tailscale is a mesh VPN.  This allows your devices to securely communicate with
+each other over the open internet even through double NATs that are typical with
+celluar providers.
+
+- create your free tailscale account
+- install the VPN software on your GCS and give it a memorable tailscale hostname
+- create an ephemeral key to use on your RCLink4G unit
+    - go to Admin Console -> Settings -> Keys
+    - click Generate Auth Key
+    - toggle reusable on
+    - set expiration days (maximum preferred for convenience)
+    - toggle ephemeral on
+    - click Generate Key
+    - copy the key text and paste it into a filed called tailscale.key
+
+
+## RCLink4G Setup
+________________________________________________________________________________
+
+Once you have successfully completed the Installation instructions above
+
+1. copy your tailscale.key file to the root of the companion computer SD card
+2. optionally edit **rclink4g.conf** file in the root of the SD card to change the following settings (see Configuration below for setting descriptions)
+    - **hostname**
+    - **ground_station_address**
+    - **ground_station_video_port**
+    - **video_channel**
+
+
+## Boot Indicator LEDs
+________________________________________________________________________________
+
+During the bootup of the companion computer each indicator LED will pulse once a
+second during the stage indicated by the LED.  If a halting error occurs during
+that stage, the LED will start a fast flash.  This tell you what stage failed
+which should give you an indication of what the problem might be.  You can access
+the logs in the logs directory on the root of the companion computer SD card for
+more detailed information.  The boot stages are as follows
+
+1. **network**: connecting to the internet and updating the clock
+2. **vpn**: connecting to the mesh VPN (Tailscale)
+3. **autopilot**: connecting via serial to the autopilot
+4. **online**: the system is online
+
+If the online LED turns off, this is an indication that internet/VPN connectivity
+was lost.  The system will attempt to reset the internet connection, restart the connection
+to the autopilot and restart the video streams.
+
+
 ## Configuration
 ________________________________________________________________________________
 
@@ -51,6 +122,7 @@ will select the configured video setting
     - normal bandwidth
     - high resolution snapshot
 
+
 ## Logs
 ________________________________________________________________________________
 
@@ -63,6 +135,7 @@ System Logs are things that occur after the companion computer has a connection 
 the internet and will tell you problems with things like: your mesh VPN, drops
 in your internet connection, etc.
 
+
 ## Snapshot Library
 ________________________________________________________________________________
 
@@ -71,54 +144,6 @@ timestamp and are located in one snapshot directory which is also accessible on
 the root of the SD card on the companion computer.  You can download the snapshots
 via the web interface or remove this SD card and insert it into your GCS computer
 to have direct access to them.
-
-
-## Installation
-________________________________________________________________________________
-
-I do not provide a Raspberry Pi image due to size limitations on github so instead
-I provide a configuration script that will configure your installed Raspberry Pi
-Lite OS (of the specified version) to be an RCLink4G companion computer. Once you
-have your OS installed, you run the following commands
-
-```bash
-curl -s http://github.com/duaneodom/rclink4g/setup_rclink4g.run
-chmod +x setup_rclink4g.run
-./setup_rclink4g.run
-```
-
-## Tailscale Setup
-________________________________________________________________________________
-
-1. create a tailscale account
-2. setup tailscale on your GCS
-3. create a tailscale ephemeral key
-4. save your ephemeral key into a file called tailscale.key
-
-## RCLink4G Setup
-________________________________________________________________________________
-
-Once you have successfully completed the Installation instructions
-
-1. copy your tailscale.key file to the root of the companion computer SD card
-
-## Boot Indicator LEDs
-________________________________________________________________________________
-
-Each indicator LED will pulse once a second during the boot stage indicated by
-the LED.  If a halting error occurs during that stage, the LED will start
-a fast flash.  This tell you what stage failed which should give you an indication
-of what the problem might be.  You can access the logs in the logs directory on
-the root of the companion computer SD card for more detailed information.
-
-1. **network**: connecting to the internet and updating the clock
-2. **vpn**: connecting to the mesh VPN (Tailscale)
-3. **autopilot**: connecting via serial to the autopilot
-4. **online**: the system is online
-
-If the online LED turns off, this is an indication that internet/VPN connectivity
-was lost.  The system will attempt to reset the connection, restart the connection
-to the autopilot and restart the video streams.
 
 
 
