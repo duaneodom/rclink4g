@@ -136,10 +136,10 @@ All configuration settings are available via the web interface.
 - **ground station video port**: the port at which your GCS is listening for a video stream
 - **video channel**: the servo channel on the autopilot which you would like to
 use for video switching. This should be an unused servo channel on your autopilot and
-you should setup your RC transmitter to toggle this channel between the 4 PWM ranges
+you should setup your RC transmitter to toggle this channel between the 4 fixed PWM ranges
 supported for the video channel.
-- **video stream PWM settings**: the 4 fixed PWM ranges for the selected video channel that
-are used to select the user configured video setting
+- **video stream PWM settings**: the desired video setting for each of the 4 fixed PWM ranges
+for the user configured video channel
     - none
     - very low bandwith
     - low bandwidth
