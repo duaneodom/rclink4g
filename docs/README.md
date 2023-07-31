@@ -17,7 +17,7 @@ compact size and low cost.
 - **Autopilot**: ArduPilot compatible flight controller
 - **Web Interface**: an HTML interface located on the companion computer accessible
 via your web browser at `http://hostname:8080` (hostname being the tailscale hostname
-that you configured on the configuration settings page, default rclink4g)
+that you configured on the configuration settings page, the default "rclink4g")
 
 
 
