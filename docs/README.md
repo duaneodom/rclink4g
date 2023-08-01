@@ -2,9 +2,10 @@
 
 This project enables sending telemetry and video for ardupilot based vehicles
 over a TCP/IP connection (specifically cellular).  The hardware that has been
-tested to work correctly so far is a Raspberry Pi Zero 2W, Raspberry Pi Camera
-and a usb cellular dongle.  This hardware has been chosen for it's light
-weight, compact size and low cost.
+tested to work correctly so far is a Raspberry Pi 3B+/Zero 2W (others should
+work), a Raspberry Pi Camera, a USB camera, a usb cellular dongle and standard
+WIFI using the Raspberry Pi built-in wireless chip.  This hardware has been
+chosen for it's light weight, compact size and low cost.
 
 ![test hardware](docs/rclink4g.jpg "test hardware")
 
