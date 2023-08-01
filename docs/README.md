@@ -183,9 +183,9 @@ download the snapshots via the web interface or remove this SD card and insert i
 your GCS computer to have direct access to them.
 
 > **Warning**
-While you can download these snapshots via the web interface it is suggested to wait
+Although you can download these snapshots via the web interface, it is suggested to wait
 until you are no longer actively operating your vehicle as this might saturate the
-bandwidth of your cellular connection and hinder the operation of your vehicle.  This
-can also be costly on metered connections such as cellular.  It's suggested to pull
-the SD card out of the RCLink4G unit and insert it into an SD card reader on another
-computer (your GCS) to copy the snapshots over directly.
+bandwidth of your cellular/wireless connection and hinder the operation of your vehicle.
+This can also use lots of costly data on metered connections such as cellular.  A better
+alternative is to pull the SD card out of the RCLink4G unit and insert it into an SD card
+reader on another computer (your GCS) to copy the snapshots over directly.
