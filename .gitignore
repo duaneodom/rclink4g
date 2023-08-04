@@ -2,3 +2,6 @@
 __pycache__
 logs
 snapshots
+build/rclink4g.tar
+build/setup_rclink4g.run
+build/tailscale.key
