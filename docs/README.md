@@ -41,9 +41,11 @@ snapshot library are available through a web interface on the companion computer
 
 I do not provide a Raspberry Pi image due to size limitations on github but instead
 provide a configuration script that will configure your installed Raspberry Pi
-Lite OS to be an RCLink4G companion computer. Once you have your OS installed
-and are connected to the internet, log in and run the following commands (replacing
-the file date/version info as appropriate).
+Lite OS to be an RCLink4G companion computer. There are plenty of guides for installing
+Raspberry Pi OS online ([rpi-imager](https://www.raspberrypi.com/software/) is an easy tool)
+so I won't detail that process here.  Once you have your OS installed and are connected
+to the internet, log in and run the following commands (replacing the file date/version
+info as appropriate).
 
 > **Note**
 You must install the Raspberry Pi OS image that corresponds to the
