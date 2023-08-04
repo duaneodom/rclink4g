@@ -156,7 +156,7 @@ for the user configured video channel
 ## Advanced Network Configuration
 
 The default network configuration supports connecting to a WiFi hotspot/router via the
-rclink4g.conf file on the root of the SD card as described in [RCLink4G Setup](rclink4g-setup).
+rclink4g.conf file on the root of the SD card as described in [RCLink4G Setup](#rclink4g-setup).
 If you are familiar with linux networking and wish to have an alternate/advanced network
 configuration you can leave the **wireless_ssid** and **wireless_password** fields blank,
 mount the second partition of the SD card on another computer (eg. your GCS) and configure the
