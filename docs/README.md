@@ -32,8 +32,8 @@ camera to your GCS as well as providing mavlink telemetry to your GCS all over t
 secure TCP/IP link provided by the cellular modem and the mesh VPN.  The companion
 computer also listens to a user specified servo channel to allow you to change video
 resolutions, video framerates and to take high resolution snapshots from your own
-RC transmitter. All of the user configurable settings along with system logs and a
-snapshot library are available through a web interface on the companion computer.
+RC transmitter. All of the user configurable settings along with the boot log, system
+logs and a snapshot library are available through a web interface on the companion computer.
 
 
 
