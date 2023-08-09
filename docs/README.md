@@ -95,12 +95,12 @@ Once you have successfully completed the [Installation](#installation) instructi
 1. copy your tailscale.key file to the root of the companion computer SD card
 2. edit **rclink4g.conf** file in the root of the SD card to change the following
 settings (see the [Configuration](#configuration) section below for setting descriptions)
-    - **ground_station_address**
-    - **wireless_ssid**
-    - **wireless_password**
     - _(optional)_ **hostname**
+    - **ground_station_address**
     - _(optional)_ **ground_station_video_port**
     - _(optional)_ **video_channel**
+    - **wireless_ssid**
+    - **wireless_password**
 4. Start your GCS computer, connect to tailscale and start your GCS software
 5. connect your RCLink4G to your autopilot via USB or serial cable
 6. turn on your vehicle (which powers on your RCLink4G unit)
@@ -128,9 +128,13 @@ another computer (your GCS) for more detailed information.  The boot stages are 
 3. **autopilot**: connecting to the autopilot
 4. **online**: the system is online
 
-If the online LED turns off, this is an indication that internet/VPN connectivity
-was lost.  The system will attempt to reset the internet connection, reconnect
-to the autopilot and restart the video streams.
+If the online LED flashes quickly, this is an indication that the RCLink4G couldn't reach
+the GCS address that you have defined in the [RCLink4G Setup](#rclink4g-setup) section.
+Make sure the GCS is connected to the internet and the mesh VPN (tailscale) and then click
+the restart button on the web interface to retry the connection.  If the online LED turns
+off, this is an indication that internet/VPN connectivity was lost.  The system will
+attempt to reset the internet connection, reconnect to the autopilot and restart the
+video streams.
 
 
 
@@ -145,6 +149,8 @@ All configuration settings are available via the web interface.
 use for video switching. This should be an unused servo channel on your autopilot and
 you should setup your RC transmitter to toggle this channel between the 4 fixed PWM ranges
 supported for the video channel.
+- **wireless ssid**: the SSID (name) of the WiFi network that you want the RCLink4G to connect to.
+- **wireless password**: the password for the WiFi network specified above.
 - **video stream PWM settings**: the desired video setting for each of the 4 fixed PWM ranges
 for the user configured video channel
     - none
