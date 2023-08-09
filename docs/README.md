@@ -125,7 +125,7 @@ problem might be.  You can access the logs in the logs directory on the root of 
 companion computer SD card by removing it and inserting it into an SD card reader on
 another computer (your GCS) for more detailed information.  The boot stages are as follows
 
-1. **network**: connecting to the internet and updating the clock
+1. **network**: connecting to the internet and updating the system clock
 2. **vpn**: connecting to the mesh VPN (Tailscale)
 3. **autopilot**: connecting to the autopilot
 4. **online**: the system is online
@@ -178,15 +178,15 @@ the mesh VPN (tailscale) establishing a connection.
 
 ## Logs
 
-Logs are accessible via the web interface and are split into Boot Logs and System Logs.
+Logs are accessible via the web interface and are split into the Boot Log and System Logs.
 
-Boot Logs are things that occur before the companion computer has a connection to
-the internet, as such, the timestamps for these logs will often be inaccurate.  This log
-is useful for determining problems with things such as:
+The Boot Log contains things that occur before the companion computer has a connection to
+the internet. Because of this the timestamps for these logs will often be inaccurate. This
+log is useful for determining problems with things such as:
 
 - invalid `rclink4g.conf` config file
 - problems connecting to the internet
-- problems updating the clock
+- problems updating the system clock
 
 System Logs are things that occur after the companion computer has a connection to
 the internet and will have accurately timestamped entries for things such as:
