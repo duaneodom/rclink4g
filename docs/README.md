@@ -96,11 +96,11 @@ Once you have successfully completed the [Installation](#installation) instructi
 2. edit **rclink4g.conf** file in the root of the SD card to change the following
 settings (see the [Configuration](#configuration) section below for setting descriptions)
     - _Recommended/Necessary_
+        - **hostname**
         - **ground_station_address**
         - **wireless_ssid**
         - **wireless_password**
     - _Optional_
-        - **hostname**
         - **ground_station_video_port**
         - **video_channel**
 4. Start your GCS computer, connect to tailscale and start your GCS software
