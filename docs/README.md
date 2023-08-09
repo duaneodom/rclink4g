@@ -95,12 +95,14 @@ Once you have successfully completed the [Installation](#installation) instructi
 1. copy your tailscale.key file to the root of the companion computer SD card
 2. edit **rclink4g.conf** file in the root of the SD card to change the following
 settings (see the [Configuration](#configuration) section below for setting descriptions)
-    - **hostname** _(optional)_ 
-    - **ground_station_address** _(recommended)_ 
-    - **ground_station_video_port** _(optional)_ 
-    - **video_channel** _(optional)_ 
-    - **wireless_ssid** _(recommended)_ 
-    - **wireless_password** _(recommended)_ 
+    - _Recommended/Necessary_
+        - **ground_station_address**
+        - **wireless_ssid**
+        - **wireless_password**
+    - _Optional_
+        - **hostname**
+        - **ground_station_video_port**
+        - **video_channel**
 4. Start your GCS computer, connect to tailscale and start your GCS software
 5. connect your RCLink4G to your autopilot via USB or serial cable
 6. turn on your vehicle (which powers on your RCLink4G unit)
